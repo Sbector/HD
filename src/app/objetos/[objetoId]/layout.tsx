@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function ObjetoLayout({
     children,
 }: {
@@ -6,7 +8,7 @@ export default function ObjetoLayout({
     return (
         <>
             {children}
-            <h2>Otros objetos</h2>
+            <h2><Link href="/objetos">Otros objetos</Link></h2>
         </>
     )
 }

@@ -5,7 +5,18 @@ export default function ObjetoList() {
     return (
         <>
             <h1>Lista de objetos</h1>
-            <h2><Link href={`objetos/${objetoId}`}>Objeto {objetoId}</Link></h2> 
+            <ul>
+            <li className="font-black text-emerald-500">
+                <Link href="/">Herbario digital</Link>
+            </li>
+            {Array.from(Array(100), (e, i) => {
+                return (
+                    <li key={i} className="font-normal text-emerald-800">
+                        <Link href={`objetos/${i+1}`}>objeto {i+1}</Link>
+                    </li>
+                )
+            })}
+        </ul>
         </>
     )
 }

@@ -1,26 +1,36 @@
-import { Metadata } from "next"
+import { Metadata } from "next";
 
 type Props = {
-    params: {
-        objetoId: string
-    }
-}
+  params: {
+    objetoId: string;
+  };
+};
 
-export const generateMetadata = async ({params}:Props): Promise<Metadata> =>{
-    const title = await new Promise (resolve => {
-        setTimeout(()=>{
-            resolve(`${params.objetoId}`)
-        },100)
-    })
-    return{
-        title: `Objeto ${title}`
-    }
-}
+// Función generateMetadata
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const title = await new Promise<string>((resolve) => {
+    setTimeout(() => {
+      resolve(params.objetoId); // Simula un título dinámico
+    }, 100);
+  });
 
-export default function ObjetoDetails({ params } : Props) {
-    return (
-        <>
-            <h1>Detalles sobre objeto {params.objetoId}</h1>
-        </>
-    )
+  return {
+    title: `Objeto ${title}`,
+  };
+};
+
+// Componente principal
+export default async function ObjetoDetails({ params }: Props) {
+  // Asegúrate de que params.objetoId esté disponible antes de renderizar
+  const objetoId = await new Promise<string>((resolve) => {
+    setTimeout(() => {
+      resolve(params.objetoId);
+    }, 100);
+  });
+
+  return (
+    <>
+      <h1>Detalles sobre objeto {objetoId}</h1>
+    </>
+  );
 }
